@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  @keyframes glowLight {
+    0%, 100% {
+      text-shadow: 0 0 8px #00ffff, 0 0 12px #00ffff;
+    }
+    50% {
+      text-shadow: 0 0 16px #00ffff, 0 0 24px #00ffff;
+    }
+  }
+
+  @keyframes glowDark {
+    0%, 100% {
+      text-shadow: 0 0 8px #39ff14, 0 0 12px #39ff14;
+    }
+    50% {
+      text-shadow: 0 0 16px #39ff14, 0 0 24px #39ff14;
+    }
+  }
+
+  .animate-glow-light {
+    animation: glowLight 2.5s ease-in-out infinite;
+  }
+
+  .dark .animate-glow-dark {
+    animation: glowDark 2.5s ease-in-out infinite;
+  }
+}
