@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import SplashScreen from './components/SplashScreen';
 import AppRoutes from './routes';
+import ChatWidget from './components/ChatWidget'; // ⬅️ Import widget
 
 function App() {
   const [isSplashDone, setIsSplashDone] = useState(false);
@@ -29,6 +30,9 @@ function App() {
               <AppRoutes />
             </main>
             <Footer />
+
+            {/* 🔹 Chat Widget floats globally on every page */}
+            <ChatWidget webhookUrl="https://n8n-on-fly-morning-night-4549.fly.dev/webhook/eb27b69a-5387-46af-b68e-7f096e4ec6e5/chat" />
           </>
         )}
       </div>

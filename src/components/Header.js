@@ -13,7 +13,6 @@ const Header = () => {
     { to: "/about", label: "About" },
     { to: "/services", label: "Services" },
     { to: "/pricing", label: "Pricing" },
-    // { to: "/testimonials", label: "Testimonials" }, // Commented out
     { to: "/faq", label: "FAQ" },
     { to: "/contact", label: "Contact" },
   ];
@@ -65,12 +64,14 @@ const Header = () => {
           })}
 
           {/* Login/Register Button */}
-          <Link
-            to="/dashboard"
+          <a
+            href="https://dashboard.botandbrand.app"
+            target="_blank"
+            rel="noopener noreferrer"
             className="ml-4 px-4 py-1.5 rounded-full font-medium text-white bg-[#0369a1] hover:bg-[#0284c7] dark:bg-[#39ff14] dark:text-black dark:hover:bg-[#aaff00] transition"
           >
             Login / Register
-          </Link>
+          </a>
 
           <ThemeToggle />
         </nav>
@@ -129,13 +130,14 @@ const Header = () => {
             })}
 
             {/* Mobile Login/Register Button */}
-            <Link
-              to="/dashboard"
-              onClick={() => setMobileOpen(false)}
+            <a
+              href="https://dashboard.botandbrand.app"
+              target="_blank"
+              rel="noopener noreferrer"
               className="block font-medium px-4 py-2 mt-4 rounded-full text-center text-white bg-[#0369a1] hover:bg-[#0284c7] dark:bg-[#39ff14] dark:text-black dark:hover:bg-[#aaff00] transition"
             >
               Login / Register
-            </Link>
+            </a>
           </div>
         </div>
       )}
