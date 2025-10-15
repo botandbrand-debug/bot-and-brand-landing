@@ -27,13 +27,13 @@ export default function Footer() {
             Bot & Brand
           </span>{" "}
           <span className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400">
-            · Powered by BAUNC
+            · From BAUNC
           </span>{" "}
           © {currentYear}. All rights reserved.
         </div>
 
         {/* Center: Arrow + Social Icons */}
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center mb-4 md:mb-0">
           {showArrow && (
             <button
               onClick={scrollToTop}
@@ -44,7 +44,7 @@ export default function Footer() {
             </button>
           )}
 
-          <div className="flex gap-5 text-xl">
+          <div className="flex gap-5 text-xl mb-2">
             <a
               href="https://www.instagram.com/Botandbrand"
               target="_blank"
@@ -73,9 +73,9 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Right: WhatsApp */}
-        <div className="flex items-center gap-2 text-sm text-zinc-500 dark:text-zinc-300">
-          <span className="whitespace-nowrap">Need help? Let’s chat.</span>
+        {/* Right: WhatsApp + Privacy & Terms */}
+        <div className="flex flex-col items-center md:items-end gap-2 text-sm">
+          <span className="whitespace-nowrap text-white">Need help? Let’s chat.</span>
           <a
             href="https://wa.me/27763604655"
             target="_blank"
@@ -85,6 +85,22 @@ export default function Footer() {
           >
             <FaWhatsapp />
           </a>
+
+          {/* Privacy & Terms Links */}
+          <div className="flex flex-col items-center md:items-end gap-1 mt-2">
+            <a
+              href="/privacy-policy"
+              className="text-white hover:text-neonGreen dark:hover:text-electricBlue transition-colors"
+            >
+              Privacy Policy
+            </a>
+            <a
+              href="/terms-of-service"
+              className="text-white hover:text-neonGreen dark:hover:text-electricBlue transition-colors"
+            >
+              Terms of Service
+            </a>
+          </div>
         </div>
       </div>
     </footer>

@@ -8,6 +8,8 @@ import Contact from "./pages/Contact";
 import Testimonials from "./pages/Testimonials";
 import Pricing from "./pages/Pricing";
 import FAQ from "./pages/FAQ";
+import PrivacyPolicy from "./pages/PrivacyPolicy"; // new import
+import TermsOfService from "./pages/TermsOfService"; // new import
 
 function AppRoutes() {
   const routes = useRoutes([
@@ -18,6 +20,8 @@ function AppRoutes() {
     { path: "/testimonials", element: <Testimonials /> },
     { path: "/pricing", element: <Pricing /> },
     { path: "/faq", element: <FAQ /> },
+    { path: "/privacy-policy", element: <PrivacyPolicy /> }, // new route
+    { path: "/terms-of-service", element: <TermsOfService /> }, // new route
   ]);
 
   return routes;

@@ -1,70 +1,17 @@
 import { useState } from "react";
 
 const pricingData = {
-  USA: {
-    currency: "$",
-    tiers: {
-      Essentials: [140, 378, 714],
-      Growth: [260, 702, 1326],
-      Autopilot: [450, 1215, 2295],
-    },
-  },
-  Canada: {
-    currency: "CAD$",
-    tiers: {
-      Essentials: [175, 364, 688],
-      Growth: [345, 729, 1377],
-      Autopilot: [595, 1188, 2244],
-    },
-  },
-  Nigeria: {
-    currency: "₦",
-    tiers: {
-      Essentials: [80000, 216000, 408000],
-      Growth: [160000, 432000, 816000],
-      Autopilot: [265000, 715500, 1351500],
-    },
-  },
-  Ghana: {
-    currency: "GHS",
-    tiers: {
-      Essentials: [1400, 3780, 7140],
-      Growth: [2800, 7560, 14280],
-      Autopilot: [4600, 12420, 23460],
-    },
-  },
-  "South Africa": {
-    currency: "ZAR",
-    tiers: {
-      Essentials: [1950, 5265, 9945],
-      Growth: [3600, 9720, 18360],
-      Autopilot: [6200, 16740, 31620],
-    },
-  },
-  Kenya: {
-    currency: "KES",
-    tiers: {
-      Essentials: [14500, 39150, 73950],
-      Growth: [26500, 71550, 135150],
-      Autopilot: [45000, 121500, 229500],
-    },
-  },
+  USA: { currency: "$", tiers: { Essentials: [140, 378, 714], Growth: [260, 702, 1326], Autopilot: [450, 1215, 2295] } },
+  Canada: { currency: "CAD$", tiers: { Essentials: [175, 364, 688], Growth: [345, 729, 1377], Autopilot: [595, 1188, 2244] } },
+  Nigeria: { currency: "₦", tiers: { Essentials: [80000, 216000, 408000], Growth: [160000, 432000, 816000], Autopilot: [265000, 715500, 1351500] } },
+  Ghana: { currency: "GHS", tiers: { Essentials: [1400, 3780, 7140], Growth: [2800, 7560, 14280], Autopilot: [4600, 12420, 23460] } },
+  "South Africa": { currency: "ZAR", tiers: { Essentials: [1950, 5265, 9945], Growth: [3600, 9720, 18360], Autopilot: [6200, 16740, 31620] } },
+  Kenya: { currency: "KES", tiers: { Essentials: [14500, 39150, 73950], Growth: [26500, 71550, 135150], Autopilot: [45000, 121500, 229500] } },
 };
 
-const flags = {
-  USA: "🇺🇸",
-  Canada: "🇨🇦",
-  Nigeria: "🇳🇬",
-  Ghana: "🇬🇭",
-  "South Africa": "🇿🇦",
-  Kenya: "🇰🇪",
-};
-
+const flags = { USA: "🇺🇸", Canada: "🇨🇦", Nigeria: "🇳🇬", Ghana: "🇬🇭", "South Africa": "🇿🇦", Kenya: "🇰🇪" };
 const durations = ["Monthly", "3 Months", "6 Months"];
-const discounts = {
-  "3 Months": 10,
-  "6 Months": 15,
-};
+const discounts = { "3 Months": 10, "6 Months": 15 };
 
 const features = {
   Essentials: [
@@ -103,12 +50,9 @@ const Pricing = () => {
 
   const getPriceIndex = () => {
     switch (duration) {
-      case "3 Months":
-        return 1;
-      case "6 Months":
-        return 2;
-      default:
-        return 0;
+      case "3 Months": return 1;
+      case "6 Months": return 2;
+      default: return 0;
     }
   };
 
@@ -121,15 +65,15 @@ const Pricing = () => {
         <h1 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-electricBlue to-neonGreen bg-clip-text text-transparent mb-4">
           Choose Your Plan
         </h1>
-        <p className="mb-10 text-base md:text-lg text-muted-foreground max-w-xl mx-auto">
+        <p className="mb-4 text-base md:text-lg text-muted-foreground max-w-xl mx-auto">
           Local pricing. Global quality. Built to grow with your brand.
         </p>
 
-        <div className="flex flex-col md:flex-row gap-4 justify-center items-center mb-8">
+        <div className="flex flex-col md:flex-row gap-4 justify-center items-center mb-2">
           {/* Region Dropdown */}
           <div className="relative">
             <select
-              className="pl-8 pr-10 py-1.5 text-xs rounded bg-card border text-foreground appearance-none min-w-[140px]"
+              className="pl-8 pr-10 py-1.5 text-xs rounded bg-card border text-foreground dark:text-white dark:bg-zinc-800 appearance-none min-w-[140px]"
               value={region}
               onChange={(e) => setRegion(e.target.value)}
             >
@@ -145,19 +89,9 @@ const Pricing = () => {
             </div>
 
             <div className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2">
-              <div className="w-6 h-6 flex items-center justify-center rounded-full bg-muted text-foreground shadow-sm">
-                <svg
-                  className="w-3.5 h-3.5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M19 9l-7 7-7-7"
-                  />
+              <div className="w-6 h-6 flex items-center justify-center rounded-full bg-muted dark:bg-zinc-700 text-foreground dark:text-white shadow-sm">
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                 </svg>
               </div>
             </div>
@@ -169,10 +103,10 @@ const Pricing = () => {
               <button
                 key={d}
                 onClick={() => setDuration(d)}
-                className={`px-4 py-1.5 rounded-full text-sm font-medium transition border shadow-sm ${
+                className={`px-4 py-1.5 rounded-full text-sm font-medium transition border ${
                   duration === d
-                    ? "bg-gradient-to-r from-electricBlue to-green-400 text-white"
-                    : "bg-muted text-muted-foreground hover:bg-muted/70"
+                    ? "bg-neonGreen text-black dark:text-white shadow-lg dark:shadow-black/50 border-transparent"
+                    : "bg-muted dark:bg-zinc-700 text-muted-foreground dark:text-white hover:bg-muted/70 dark:hover:bg-zinc-600"
                 }`}
               >
                 {d}
@@ -180,6 +114,11 @@ const Pricing = () => {
             ))}
           </div>
         </div>
+
+        {/* Showing which month is selected */}
+        <p className="text-sm text-muted-foreground mb-6">
+          Showing details for <span className="font-semibold">{duration}</span>
+        </p>
 
         {/* Pricing Tiers */}
         <div className="grid md:grid-cols-3 gap-6 text-left">
@@ -229,7 +168,7 @@ const Pricing = () => {
                   href="https://wa.me/27763604655"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block mt-auto bg-electricBlue hover:bg-electricBlue-dark text-white font-semibold px-6 py-2 rounded-full"
+                  className="inline-block mt-auto bg-electricBlue hover:bg-electricBlue-dark dark:text-white text-black font-semibold px-6 py-2 rounded-full shadow-md dark:shadow-black/50 hover:shadow-lg transition"
                 >
                   Start Now
                 </a>

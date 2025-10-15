@@ -29,7 +29,7 @@ const SplashScreen = () => {
             className="w-24 h-24 animate-spin-slow mb-4"
           />
           <p className="text-xs text-muted-foreground absolute bottom-6">
-            Powered by <span className="font-semibold">BAUNC</span>
+            From <span className="font-semibold">BAUNC</span>
           </p>
         </motion.div>
       )}

@@ -43,10 +43,10 @@ const Contact = () => {
             <p>
               Or email us directly at{" "}
               <a
-                href="mailto:BotAndBrand@solution4u.com"
+                href="mailto:Hello@botandbrand.app"
                 className="text-electricBlue underline"
               >
-                BotAndBrand@solution4u.com
+                Hello@botandbrand.app
               </a>
             </p>
             <div className="flex justify-center gap-4 mt-4">
@@ -62,7 +62,7 @@ const Contact = () => {
                 href="https://instagram.com/botandbrand"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2 rounded-full bg-gradient-to-r from-electricBlue to-blue-600 text-white font-medium shadow hover:scale-105 transition"
+                className="px-4 py-2 rounded-full bg-gradient-to-tr from-[#feda75] via-[#fa7e1e] to-[#d62976] text-black dark:text-white font-medium shadow hover:scale-105 transition"
               >
                 DM Us on Instagram
               </a>

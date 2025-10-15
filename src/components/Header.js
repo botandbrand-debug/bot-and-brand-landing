@@ -9,13 +9,14 @@ const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const navItems = [
-    { to: "/", label: "Home" },
-    { to: "/about", label: "About" },
-    { to: "/services", label: "Services" },
-    { to: "/pricing", label: "Pricing" },
-    { to: "/faq", label: "FAQ" },
-    { to: "/contact", label: "Contact" },
-  ];
+  { to: "/", label: "Home" },
+  { to: "/about", label: "About" },
+  { to: "/services", label: "Services" },
+  { to: "/pricing", label: "Pricing" },
+  { to: "/faq", label: "FAQ" },
+  { to: "/contact", label: "Contact" },
+];
+
 
   return (
     <header className="bg-background shadow-sm border-b border-border z-50 relative">
