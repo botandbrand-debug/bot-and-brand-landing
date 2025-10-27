@@ -18,20 +18,11 @@ export default function Hero() {
 
         {/* Center: Text */}
         <div className="space-y-6 text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold leading-tight">
-            <span
-              className="block bg-gradient-to-r from-[#00ffff] to-[#3b82f6] 
-              dark:from-[#39ff14] dark:to-[#00ff99] 
-              bg-clip-text text-transparent 
-              drop-shadow-[0_0_8px_#00ffff] 
-              dark:drop-shadow-[0_0_8px_#39ff14] 
-              transition-all duration-500"
-            >
-              Your Digital Presence. Autopiloted.
-            </span>
+          <h1 className="text-4xl sm:text-5xl font-bold leading-tight text-black dark:text-white">
+            Your digital presence autopiloted
           </h1>
-          <p className="text-lg sm:text-xl text-muted-foreground">
-            Whether you’re launching, pivoting, or scaling, our process helps you build credibility, capture attention, and grow — without complexity.
+          <p className="text-lg sm:text-xl text-gray-700 dark:text-white">
+            Whether you’re launching, pivoting, or scaling, our process helps you build credibility, capture attention, and grow without complexity
           </p>
         </div>
 

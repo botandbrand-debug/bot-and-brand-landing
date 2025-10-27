@@ -9,33 +9,25 @@ const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const navItems = [
-  { to: "/", label: "Home" },
-  { to: "/about", label: "About" },
-  { to: "/services", label: "Services" },
-  { to: "/pricing", label: "Pricing" },
-  { to: "/faq", label: "FAQ" },
-  { to: "/contact", label: "Contact" },
-];
-
+    { to: "/", label: "Home" },
+    { to: "/about", label: "About" },
+    { to: "/services", label: "Services" },
+    { to: "/pricing", label: "Pricing" },
+    { to: "/faq", label: "FAQ" },
+    { to: "/contact", label: "Contact" },
+  ];
 
   return (
     <header className="bg-background shadow-sm border-b border-border z-50 relative">
       <div className="max-w-7xl mx-auto px-4 md:px-8 py-3 flex justify-between items-center">
-        {/* Logo & Title */}
-        <Link to="/" className="flex items-center space-x-3 group">
+        {/* Logo Only */}
+        <Link to="/" className="flex items-center">
           <img
             src={logo}
             alt="Bot & Brand Logo"
-            className="h-10 w-10 animate-spin-slow"
+            className="h-14 w-14" // increased size
+            // animate-spin-slow // rotation commented out
           />
-          <span
-            className="text-xl font-bold tracking-wide bg-clip-text text-transparent transition duration-300
-              bg-gradient-to-r from-[#0369a1] to-[#00ffff]
-              dark:from-[#39ff14] dark:to-[#aaff00]
-              dark:drop-shadow-[0_0_8px_#39ff14]"
-          >
-            Bot & Brand
-          </span>
         </Link>
 
         {/* Desktop Navigation */}

@@ -17,11 +17,11 @@ const features = {
   Essentials: [
     "✅ 3 branded posts per week (image or carousel)",
     "✅ Captions with hashtags, tailored to your brand tone",
-    "✅ Scheduled publishing — hands-off posting",
+    "✅ Scheduled publishing, hands-off posting",
     "✅ Basic chatbot (handles simple FAQs or lead collection)",
     "🚫 No voice or call automation",
     "🚫 No custom reporting",
-    "A great start for anyone needing a steady, professional online presence — without doing the heavy lifting.",
+    "A great start for anyone needing a steady, professional online presence without doing the heavy lifting.",
   ],
   Growth: [
     "✅ 5 branded posts per week (images, carousels, or reels)",
@@ -30,7 +30,7 @@ const features = {
     "✅ Advanced chatbot (automated responses, lead capture, welcome flows)",
     "✅ Smart voice/call automation (auto-replies, basic bookings or voice prompts)",
     "🚫 No custom reports or tailored features",
-    "Perfect for growing brands who want to stay consistent and respond like a pro, even when offline.",
+    "Perfect for growing brands who want to stay consistent and respond like a pro even when offline.",
   ],
   Autopilot: [
     "✅ Daily content (5–7 posts/week in various formats)",
@@ -38,9 +38,9 @@ const features = {
     "✅ Advanced chatbot (multi-step flows, reminders, follow-ups)",
     "✅ Smart call/voice automation (appointment handling, audio responses, reminders)",
     "✅ Monthly performance dashboard",
-    "✅ Tailored service — we adjust the strategy to your industry, market, and style",
+    "✅ Tailored service, we adjust the strategy to your industry, market, and style",
     "✅ Priority support",
-    "This is your brand, online and on autopilot — from posts to DMs to voice calls, fully handled.",
+    "This is your brand, online and on autopilot from posts to DMs to voice calls fully handled.",
   ],
 };
 
@@ -62,10 +62,10 @@ const Pricing = () => {
   return (
     <section className="bg-background text-foreground py-16 px-4">
       <div className="max-w-6xl mx-auto text-center">
-        <h1 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-electricBlue to-neonGreen bg-clip-text text-transparent mb-4">
+        <h1 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-electricBlue to-neonGreen bg-clip-text text-transparent mb-2">
           Choose Your Plan
         </h1>
-        <p className="mb-4 text-base md:text-lg text-muted-foreground max-w-xl mx-auto">
+        <p className="mb-4 text-base md:text-lg text-muted-foreground max-w-xl mx-auto font-bold">
           Local pricing. Global quality. Built to grow with your brand.
         </p>
 
@@ -105,8 +105,8 @@ const Pricing = () => {
                 onClick={() => setDuration(d)}
                 className={`px-4 py-1.5 rounded-full text-sm font-medium transition border ${
                   duration === d
-                    ? "bg-neonGreen text-black dark:text-white shadow-lg dark:shadow-black/50 border-transparent"
-                    : "bg-muted dark:bg-zinc-700 text-muted-foreground dark:text-white hover:bg-muted/70 dark:hover:bg-zinc-600"
+                    ? "bg-neonGreen text-black dark:bg-white dark:text-black shadow-lg border-black dark:border-white"
+                    : "bg-muted dark:bg-zinc-700 text-muted-foreground dark:text-white hover:bg-muted/70 dark:hover:bg-zinc-600 border-transparent"
                 }`}
               >
                 {d}
@@ -115,7 +115,6 @@ const Pricing = () => {
           </div>
         </div>
 
-        {/* Showing which month is selected */}
         <p className="text-sm text-muted-foreground mb-6">
           Showing details for <span className="font-semibold">{duration}</span>
         </p>
@@ -143,32 +142,29 @@ const Pricing = () => {
                     {price.toLocaleString()}
                   </p>
                   {hasDiscount && (
-                    <p className="text-sm text-green-500 font-medium mb-4">
+                    <p className="text-sm text-muted-foreground font-medium mb-4">
                       Save {discount}% with {duration}
                     </p>
                   )}
-                  <ul className="text-sm space-y-2 mb-6">
-                    {features[tier].map((item, i) => (
-                      <li
-                        key={i}
-                        className={
-                          item.startsWith("✅")
-                            ? "text-green-400"
-                            : item.startsWith("🚫")
-                            ? "text-red-400"
-                            : "text-muted-foreground italic"
-                        }
-                      >
-                        {item}
-                      </li>
-                    ))}
+                  <ul className="text-sm space-y-2 mb-6 text-black dark:text-white">
+                    {features[tier].map((item, i) =>
+                      item.startsWith("A great start") ||
+                      item.startsWith("Perfect for") ||
+                      item.startsWith("This is your brand") ? (
+                        <li key={i} className="italic font-serif text-sm text-gray-700 dark:text-gray-300">
+                          {item}
+                        </li>
+                      ) : (
+                        <li key={i}>{item}</li>
+                      )
+                    )}
                   </ul>
                 </div>
                 <a
-                  href="https://wa.me/27763604655"
+                  href="https://wa.me/27716235194"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block mt-auto bg-electricBlue hover:bg-electricBlue-dark dark:text-white text-black font-semibold px-6 py-2 rounded-full shadow-md dark:shadow-black/50 hover:shadow-lg transition"
+                  className="inline-block mt-auto bg-black text-white dark:bg-white dark:text-black font-semibold px-6 py-2 rounded-full shadow-md hover:shadow-lg transition"
                 >
                   Start Now
                 </a>

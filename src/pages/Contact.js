@@ -1,27 +1,44 @@
 import React from "react";
+import { FaWhatsapp, FaInstagram } from "react-icons/fa";
 
 const Contact = () => {
   return (
     <section className="fadeInUp bg-background text-foreground py-16 px-4">
       <div className="max-w-3xl mx-auto text-center">
-        <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-electricBlue to-neonGreen text-transparent bg-clip-text">
-          Get in Touch
-        </h2>
-        <p className="mb-8 text-muted-foreground">
-          Reach us by email, WhatsApp, Instagram, or the form below. We usually respond within 1 business day.
+        {/* Page Header */}
+        <h1 className="text-4xl md:text-5xl font-bold mb-6 text-black dark:text-white">
+          Contact Us
+        </h1>
+
+        <p className="mb-10 text-muted-foreground">
+          Reach us by email, WhatsApp, Instagram, or the form below. We usually respond fast.
         </p>
 
-        <div className="bg-card border border-border rounded-2xl shadow-xl p-6 md:p-10">
-          <form className="grid gap-4 text-left">
+        {/* Contact Form */}
+        <div className="bg-card border border-border rounded-2xl shadow-xl p-6 md:p-10 mb-8">
+          <form
+            className="grid gap-4 text-left"
+            onSubmit={(e) => {
+              e.preventDefault();
+              const name = e.target[0].value;
+              const email = e.target[1].value;
+              const message = e.target[2].value;
+              window.location.href = `mailto:hello@botandbrand.app?subject=Contact%20from%20${encodeURIComponent(
+                name
+              )}&body=${encodeURIComponent(
+                `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+              )}`;
+            }}
+          >
             <input
               type="text"
-              placeholder="Your Name"
+              placeholder="Enter name"
               required
               className="bg-background border border-border px-4 py-3 rounded-lg placeholder:text-muted-foreground"
             />
             <input
               type="email"
-              placeholder="Your Email"
+              placeholder="Enter email"
               required
               className="bg-background border border-border px-4 py-3 rounded-lg placeholder:text-muted-foreground"
             />
@@ -33,41 +50,33 @@ const Contact = () => {
             />
             <button
               type="submit"
-              className="bg-electricBlue text-white py-3 rounded-xl hover:opacity-90 transition font-semibold"
+              className="w-full bg-black text-white dark:bg-white dark:text-black py-3 rounded-xl shadow-lg hover:opacity-90 transition font-semibold"
             >
               Send Message
             </button>
           </form>
+        </div>
 
-          <div className="mt-8 text-sm text-muted-foreground text-center space-y-2">
-            <p>
-              Or email us directly at{" "}
-              <a
-                href="mailto:Hello@botandbrand.app"
-                className="text-electricBlue underline"
-              >
-                Hello@botandbrand.app
-              </a>
-            </p>
-            <div className="flex justify-center gap-4 mt-4">
-              <a
-                href="https://wa.me/27763604655"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-4 py-2 rounded-full bg-gradient-to-r from-green-400 to-green-500 text-white font-medium shadow hover:scale-105 transition"
-              >
-                Chat on WhatsApp
-              </a>
-              <a
-                href="https://instagram.com/botandbrand"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-4 py-2 rounded-full bg-gradient-to-tr from-[#feda75] via-[#fa7e1e] to-[#d62976] text-black dark:text-white font-medium shadow hover:scale-105 transition"
-              >
-                DM Us on Instagram
-              </a>
-            </div>
-          </div>
+        {/* WhatsApp & Instagram Icon Buttons */}
+        <div className="flex justify-center gap-6 mt-6">
+          <a
+            href="https://wa.me/27716235194"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center w-14 h-14 rounded-full bg-white dark:bg-zinc-900 hover:scale-110 transition-transform duration-300 shadow-lg"
+            title="Chat on WhatsApp"
+          >
+            <FaWhatsapp className="text-3xl text-[#39ff14]" />
+          </a>
+          <a
+            href="https://www.instagram.com/botandbrand"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center w-14 h-14 rounded-full bg-black hover:scale-110 transition-transform duration-300 shadow-lg"
+            title="DM us on Instagram"
+          >
+            <FaInstagram className="text-3xl text-pink-500" />
+          </a>
         </div>
       </div>
     </section>

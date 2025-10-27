@@ -1,9 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 
 const ChatWidget = ({
-  webhookUrl = "https://n8n-on-fly-morning-night-4549.fly.dev/webhook/c9f33b1f-9251-4632-b9ee-7b05bb681a93/chat",
-  brandColor = "#00ffff",
+  clientId = "68934fbac5e17e036e890892", // Default client ID
+  baseUrl = "https://api.botandbrand.app",
   welcomeMessage = "👋 Hi! How can I help you?",
+  widgetTitle = "Baunc Chat",
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([{ from: "bot", text: welcomeMessage }]);
@@ -30,36 +31,34 @@ const ChatWidget = ({
     setLoading(true);
 
     try {
-      const res = await fetch(webhookUrl, {
+      const res = await fetch(`${baseUrl}/api/widget/chat`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: userInput }),
+        headers: { 
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ 
+          message: userInput,
+          clientId: clientId 
+        }),
       });
 
       if (!res.ok) {
-        throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+        const errorText = await res.text();
+        throw new Error(`HTTP ${res.status}: ${errorText}`);
       }
 
       const data = await res.json();
-      const botMsg = { from: "bot", text: data.reply || data.message || "No response from server" };
+      const botMsg = { 
+        from: "bot", 
+        text: data.reply || data.message || "No response from server" 
+      };
       setMessages((prev) => [...prev, botMsg]);
     } catch (err) {
       console.error("Chat error:", err);
-      
-      // More detailed error message
-      let errorMsg = "⚠️ Connection Error: ";
-      if (err.message.includes("Failed to fetch")) {
-        errorMsg += "Cannot reach server. Check CORS settings or network connection.";
-      } else if (err.message.includes("HTTP")) {
-        errorMsg += err.message;
-      } else {
-        errorMsg += err.message;
-      }
-      
-      setMessages((prev) => [
-        ...prev,
-        { from: "bot", text: errorMsg },
-      ]);
+      const errorMsg = err.message.includes("Failed to fetch") 
+        ? "⚠️ Connection error. Please check your internet." 
+        : `⚠️ Error: ${err.message}`;
+      setMessages((prev) => [...prev, { from: "bot", text: errorMsg }]);
     } finally {
       setLoading(false);
     }
@@ -70,8 +69,7 @@ const ChatWidget = ({
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          style={{ backgroundColor: brandColor }}
-          className="p-3 rounded-full shadow-lg text-black font-bold hover:scale-110 transition-transform"
+          className="p-3 rounded-full shadow-xl text-black font-bold hover:scale-110 transition-transform bg-[#0369a1] dark:bg-[#39ff14]"
         >
           💬
         </button>
@@ -80,13 +78,10 @@ const ChatWidget = ({
       {isOpen && (
         <div className="w-80 h-96 bg-white dark:bg-gray-900 shadow-2xl rounded-2xl flex flex-col border border-gray-300 dark:border-gray-700">
           {/* Header */}
-          <div
-            style={{ backgroundColor: brandColor }}
-            className="p-3 rounded-t-2xl flex justify-between items-center text-black font-bold"
-          >
-            <span>Baunc Chat</span>
+          <div className="p-3 rounded-t-2xl flex justify-between items-center font-bold text-black bg-[#0369a1] dark:bg-[#39ff14]">
+            <span>{widgetTitle}</span>
             <button 
-              onClick={() => setIsOpen(false)}
+              onClick={() => setIsOpen(false)} 
               className="hover:scale-110 transition-transform"
             >
               ✖
@@ -94,21 +89,21 @@ const ChatWidget = ({
           </div>
 
           {/* Messages */}
-          <div className="flex-1 p-3 overflow-y-auto space-y-2 bg-gray-50 dark:bg-gray-800">
+          <div className="flex-1 p-3 overflow-y-auto space-y-3 bg-gray-50 dark:bg-gray-800">
             {messages.map((msg, i) => (
               <div
                 key={i}
-                className={`p-2 rounded-lg max-w-[75%] break-words ${
+                className={`p-3 rounded-xl max-w-[75%] break-words shadow-md ${
                   msg.from === "user"
-                    ? "ml-auto bg-blue-500 text-white"
-                    : "mr-auto bg-gray-200 text-black dark:bg-gray-700 dark:text-white"
+                    ? "ml-auto bg-white text-black dark:bg-gray-700 dark:text-white border border-gray-300 dark:border-gray-600"
+                    : "mr-auto bg-[#0369a1] text-white dark:bg-[#39ff14] dark:text-black border border-[#0284c7] dark:border-[#aaff00] shadow-lg"
                 }`}
               >
                 {msg.text}
               </div>
             ))}
             {loading && (
-              <div className="mr-auto bg-gray-200 text-black dark:bg-gray-700 dark:text-white p-2 rounded-lg max-w-[75%]">
+              <div className="mr-auto p-3 rounded-xl max-w-[75%] break-words shadow-lg bg-[#0369a1] text-white dark:bg-[#39ff14] dark:text-black border border-[#0284c7] dark:border-[#aaff00]">
                 <span className="inline-block animate-pulse">Typing...</span>
               </div>
             )}
@@ -123,13 +118,12 @@ const ChatWidget = ({
               onKeyDown={(e) => e.key === "Enter" && sendMessage()}
               placeholder="Type a message..."
               disabled={loading}
-              className="flex-1 p-2 rounded-lg border border-gray-400 dark:border-gray-600 bg-white dark:bg-gray-800 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="flex-1 p-2 rounded-lg border border-gray-400 dark:border-gray-600 bg-white dark:bg-gray-800 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-[#0369a1]"
             />
             <button
               onClick={sendMessage}
               disabled={loading}
-              style={{ backgroundColor: brandColor }}
-              className="ml-2 px-4 py-2 rounded-lg text-black font-bold hover:opacity-90 transition-opacity disabled:opacity-50"
+              className="ml-2 px-4 py-2 rounded-lg text-black font-bold hover:opacity-90 transition-opacity disabled:opacity-50 bg-[#0369a1] dark:bg-[#39ff14]"
             >
               ➤
             </button>

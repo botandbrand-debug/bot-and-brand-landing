@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaInstagram, FaWhatsapp, FaArrowUp } from "react-icons/fa";
+import { FaTiktok } from "react-icons/fa6";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -18,21 +19,21 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-gradient-to-tr from-[#0f0f0f] via-black to-[#111111] text-foreground border-t border-border py-6 px-4">
+    <footer className="bg-gradient-to-tr from-[#0f0f0f] via-black to-[#111111] border-t border-border py-6 px-4">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm relative">
 
         {/* Left: Brand + Copyright */}
-        <div className="text-center md:text-left text-zinc-500 dark:text-zinc-400">
-          <span className="text-base font-semibold bg-gradient-to-r from-[#00ffff] to-[#39ff14] bg-clip-text text-transparent">
+        <div className="text-center md:text-left text-white">
+          <span className="text-base font-semibold">
             Bot & Brand
           </span>{" "}
-          <span className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400">
+          <span className="text-xs sm:text-sm text-zinc-400">
             · From BAUNC
           </span>{" "}
           © {currentYear}. All rights reserved.
         </div>
 
-        {/* Center: Arrow + Social Icons */}
+        {/* Center: Back to top arrow */}
         <div className="flex flex-col items-center mb-4 md:mb-0">
           {showArrow && (
             <button
@@ -43,13 +44,28 @@ export default function Footer() {
               <FaArrowUp />
             </button>
           )}
+        </div>
 
-          <div className="flex gap-5 text-xl mb-2">
+        {/* Right: Social Icons (bounce together) */}
+        <div className="flex flex-col items-center md:items-end gap-2 text-sm">
+          <span className="whitespace-nowrap text-white">Need help? Let's chat.</span>
+          
+          <div className="flex gap-5 text-xl mt-1 animate-bounce">
+            <a
+              href="https://wa.me/27763604655"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-green-500 hover:text-green-400 transition-transform duration-300"
+              aria-label="WhatsApp"
+            >
+              <FaWhatsapp />
+            </a>
+
             <a
               href="https://www.instagram.com/Botandbrand"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#E1306C] hover:text-pink-400 transition-colors"
+              className="text-[#E1306C] hover:text-pink-400 transition-transform duration-300"
               aria-label="Instagram"
             >
               <FaInstagram />
@@ -59,32 +75,12 @@ export default function Footer() {
               href="https://www.tiktok.com/@bot.and.brand"
               target="_blank"
               rel="noopener noreferrer"
+              className="text-white hover:text-[#00ffff] transition-colors duration-300"
               aria-label="TikTok"
-              className="w-5 h-5 hover:opacity-90 transition-opacity"
             >
-              <svg
-                viewBox="0 0 256 256"
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-full h-full fill-[#00ffff] hover:fill-[#39ff14] transition-colors"
-              >
-                <path d="M176 32c0 26.51 21.49 48 48 48v40a87.93 87.93 0 01-48-14.07V160a80 80 0 11-80-80 79.36 79.36 0 0124.52 3.87V56a8 8 0 0116 0v72a8 8 0 01-8 8 64 64 0 1064 64V32z" />
-              </svg>
+              <FaTiktok />
             </a>
           </div>
-        </div>
-
-        {/* Right: WhatsApp + Privacy & Terms */}
-        <div className="flex flex-col items-center md:items-end gap-2 text-sm">
-          <span className="whitespace-nowrap text-white">Need help? Let’s chat.</span>
-          <a
-            href="https://wa.me/27763604655"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-green-500 hover:text-green-400 animate-bounce text-xl transition-transform duration-300"
-            aria-label="WhatsApp"
-          >
-            <FaWhatsapp />
-          </a>
 
           {/* Privacy & Terms Links */}
           <div className="flex flex-col items-center md:items-end gap-1 mt-2">
