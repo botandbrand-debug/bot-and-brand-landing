@@ -139,7 +139,7 @@ const Waitlist = () => {
                     <span className="text-[8px] sm:text-[10px] font-bold text-white">BB</span>
                   </div>
                   <span className="text-xs sm:text-sm text-gray-300 font-medium truncate">
-                    dashboard.botandbrand.com
+                    dashboard.botandbrand.app
                   </span>
                 </div>
               </div>

@@ -16,14 +16,12 @@ function App() {
 
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-background text-foreground flex flex-col">
-        {!isSplashDone ? (
-          <SplashScreen />
-        ) : (
-          // Show ONLY Waitlist page, no routing, no other components
-          <Waitlist />
-        )}
-      </div>
+      {/* REMOVE the wrapper div - let Waitlist handle its own layout */}
+      {!isSplashDone ? (
+        <SplashScreen />
+      ) : (
+        <Waitlist />
+      )}
     </ThemeProvider>
   );
 }
