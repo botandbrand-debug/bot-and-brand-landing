@@ -14,17 +14,13 @@ const Waitlist = () => {
     setError("");
 
     try {
-      const response = await fetch("https://connect.mailerlite.com/api/subscribers", {
+      // Call your serverless function instead of MailerLite directly
+      const response = await fetch("/api/subscribe", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${process.env.REACT_APP_MAILERLITE_API_TOKEN}`,
-          "Accept": "application/json"
         },
-        body: JSON.stringify({
-          email: email,
-          groups: ["177227062457665010"] // Your MailerLite group ID
-        })
+        body: JSON.stringify({ email: email })
       });
 
       const data = await response.json();
@@ -33,22 +29,31 @@ const Waitlist = () => {
         setSubmitted(true);
         setEmail("");
       } else {
-        // Handle specific MailerLite errors
+        // Handle specific MailerLite errors from your serverless function
         if (data.error && data.error.message) {
-          if (data.error.message.includes("already subscribed")) {
+          if (data.error.message.includes("already subscribed") || data.error.message.includes("already exists")) {
             setError("This email is already on our waitlist.");
           } else if (data.error.message.includes("invalid email")) {
             setError("Please enter a valid email address.");
           } else {
-            throw new Error(data.error.message);
+            // For "Unauthenticated" or other errors
+            if (data.error.message.includes("Unauthenticated")) {
+              setError("Server configuration issue. Please try again later.");
+              console.error("MailerLite authentication failed - check server token");
+            } else {
+              setError(data.error.message || "Failed to subscribe. Please try again.");
+            }
           }
+        } else if (data.error) {
+          // Handle generic error object
+          setError(data.error);
         } else {
           throw new Error("Failed to subscribe. Please try again.");
         }
       }
     } catch (err) {
       setError(err.message || "Something went wrong. Please try again.");
-      console.error("MailerLite error:", err);
+      console.error("API error:", err);
     } finally {
       setLoading(false);
     }
