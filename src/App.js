@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ThemeProvider } from './components/ThemeProvider';
 import SplashScreen from './components/SplashScreen';
-import Waitlist from './pages/Waitlist';
+import AppRoutes from './routes';
 
 function App() {
   const [isSplashDone, setIsSplashDone] = useState(false);
@@ -16,12 +16,7 @@ function App() {
 
   return (
     <ThemeProvider>
-      {/* REMOVE the wrapper div - let Waitlist handle its own layout */}
-      {!isSplashDone ? (
-        <SplashScreen />
-      ) : (
-        <Waitlist />
-      )}
+      {!isSplashDone ? <SplashScreen /> : <AppRoutes />}
     </ThemeProvider>
   );
 }

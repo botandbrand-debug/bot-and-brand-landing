@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import logo from "../assets/logo.png";
 import desktopView from "../assets/desktopview.png";
+import { Link } from 'react-router-dom';
 
 const Waitlist = () => {
   const [email, setEmail] = useState("");
